@@ -9,7 +9,7 @@ import {
 } from './actions'
 
 const initialState = {
-    propertyData: {},
+    propertyDataInput: {},
     sortDirection: 'asc',
     sortType: 'id',
     searchInput: '',
@@ -18,26 +18,36 @@ const initialState = {
 
 // GET ALL DATA
 
+const customReceive = (receiveBuffer, propertyDataInput) => {
+    for (let key of Object.keys(receiveBuffer)) {
+        const bufferItem = receiveBuffer[key]
+        const inputItem = propertyDataInput[key]
+        if (inputItem === undefined) {
+            propertyDataInput[key] = bufferItem
+            continue
+        }
+        if (bufferItem.lastUpdate > inputItem.lastUpdate) {
+            inputItem.lastUpdate = bufferItem.lastUpdate
+            inputItem.price = bufferItem.price
+        }
+    }
+    return propertyDataInput
+}
+
 const handleReceiveData = (state, payload) => ({
     ...state,
-    propertyData: {
-        ...state.propertyData,
-        [payload.id]: {
-            ...state.propertyData[payload.id],
-            ...payload,
-        },
-    },
+    propertyDataInput: customReceive(payload, state.propertyDataInput),
 })
 
 // MARK AS FAVORITE
 
 const handleMarkAsFavorite = (state, payload) => ({
     ...state,
-    propertyData: {
-        ...state.propertyData,
+    propertyDataInput: {
+        ...state.propertyDataInput,
         [payload]: {
-            ...state.propertyData[payload],
-            isFavorite: true,
+            ...state.propertyDataInput[payload],
+            isFavorite: !state.propertyDataInput[payload].isFavorite,
         },
     },
 })

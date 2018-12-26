@@ -8,7 +8,16 @@ export default class SearchAutocomplete extends PureComponent {
         listAutocomplete: arrayOf(shape({}))
     }
 
-    static defaultProps = {}
+    static defaultProps = {
+        listAutocomplete: [
+            {
+                id: 124,
+                address: 'Lake Jamarcus 95514 McClure Green',
+                type: 'home',
+                price: 4545,
+            },
+        ],
+    }
 
     renderSuggestion = item => (
         <div className='searchAutocomplete_row' key={item.id}>

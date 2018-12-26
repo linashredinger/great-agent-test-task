@@ -13,7 +13,10 @@ export default class Sorting extends PureComponent {
     }
 
     static defaultProps = {
-
+        sortDirection: 'asc',
+        onSort: () => {},
+        fieldType: 'id',
+        sortType: 'id',
     }
 
     handleClick = () => {

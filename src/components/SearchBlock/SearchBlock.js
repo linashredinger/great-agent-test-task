@@ -11,7 +11,11 @@ export default class SearchBlock extends PureComponent {
         searchInput: string
     }
 
-    static defaultProps = {}
+    static defaultProps = {
+        onSearchSubmit: () => {},
+        onSearch: () => {},
+        searchInput: 'Home',
+    }
 
     handleChange = e => {
         this.props.onSearch(e.target.value)

@@ -10,7 +10,9 @@ export default class TableHead extends PureComponent {
         activeTab: string,
     }
 
-    static defaultProps = {}
+    static defaultProps = {
+        activeTab: 'id',
+    }
 
     renderTableHead = values => {
         const { activeTab } =this.props

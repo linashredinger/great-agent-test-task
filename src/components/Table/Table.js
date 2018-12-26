@@ -12,6 +12,8 @@ export default class Table extends PureComponent {
     }
 
     static defaultProps = {
+        children: [],
+        sortType: 'id',
     }
 
     render() {

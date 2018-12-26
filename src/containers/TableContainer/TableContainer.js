@@ -32,12 +32,30 @@ class TableContainer extends Component {
         sortType: string,
     }
 
-    static defaultProps = {}
+    state = {
+        timerId: null,
+    }
+
+    updateBuffer = {}
 
     componentDidMount() {
         properties$.subscribe((data) => {
-            this.props.receiveData(data)
+            // not in react way but to achieve performance
+            this.updateBuffer[data.id] = data
         })
+        const timerId = setInterval(() => {
+            this.props.receiveData(this.updateBuffer)
+            this.updateBuffer = {}
+        }, 2000)
+        this.setState({
+            timerId,
+        })
+    }
+
+    componentWillUnmount() {
+        if (this.state.timerId) {
+            clearInterval(this.state.timerId)
+        }
     }
 
 

@@ -19,7 +19,15 @@ export default class TableRow extends PureComponent {
         onFavorite: func,
     }
 
-    static defaultProps = {}
+    static defaultProps = {
+        id: 1,
+        address: 'Lake Jamarcus 95514 McClure Green',
+        price: 4344,
+        lastUpdate: 45423456,
+        type: 'condo',
+        isFavorite: true,
+        onFavorite: () => {},
+    }
 
     renderTableCell = type => {
         if (type === 'isFavorite') {
