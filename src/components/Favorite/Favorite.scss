@@ -1,0 +1,8 @@
+.favorite{
+  cursor: pointer;
+  &_icon{
+    &:hover{
+      fill: #e64c65;
+    }
+  }
+}

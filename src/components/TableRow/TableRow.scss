@@ -1,0 +1,29 @@
+.tableRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #1f253d;
+  background-color: #394264;
+  -webkit-transition: background .2s;
+  transition: background .2s;
+  &:hover{
+    background: #50597b;
+  }
+  &_item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 120px;
+    height: 40px;
+    padding: 5px;
+    border-right: 1px solid #1f253d;
+    &:nth-child(2){
+      flex-basis: 0;
+      flex-grow: 1;
+      justify-content: flex-start;
+    }
+    &:last-child{
+      border-right: none;
+    }
+  }
+}

@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
-import properties$ from './mock';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import configureStore from './reducer/configureStore'
+import TableContainer from './containers/TableContainer'
+import SearchContainer from './containers/SearchContainer'
+import Header from './components/Header'
+
+import './App.css'
+
+const store = configureStore()
 
 class App extends Component {
 
-  componentDidMount() {
-    properties$.subscribe((data) => {
-      console.log('data', data);
-    })
-  }
-
   render() {
     return (
-      <div className="app">
-      </div>
-    );
+      <Provider store={store}>
+        <Header />
+        <SearchContainer />
+        <TableContainer />
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App

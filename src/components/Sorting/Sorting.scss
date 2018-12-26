@@ -1,0 +1,13 @@
+.sorting {
+  cursor: pointer;
+  padding-left: 10px;
+  &:before {
+    position: absolute;
+    content: ('▼');
+  }
+  &.asc {
+    &:before {
+      content: ('▲');
+    }
+  }
+}
